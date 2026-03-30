@@ -1,0 +1,164 @@
+Build a sports discovery and registration platform for Saudi Arabia called "SportPass" (سبورت باس).
+
+Tagline: "Your pass to sport in Saudi Arabia" / "بطاقتك للرياضة في المملكة"
+
+It is inspired by minidrett.no in structure and UX — clean, card-based, professional — 
+adapted for KSA, bilingual Arabic/English, with RTL support.
+
+---
+
+WHAT THE PLATFORM DOES
+
+SportPass helps people in Saudi Arabia:
+1. Discover sports available in their region
+2. Find clubs for each sport near them
+3. Browse and register for coaching courses & certifications
+4. Purchase sport licenses
+
+---
+
+SITE STRUCTURE & PAGES
+
+1. Home — hero, sport category grid, featured clubs, how it works section
+2. Sports — browse all 5 sports with search/filter
+3. Sport Detail — overview of one sport + tabs for: Clubs / Courses / Licenses
+4. Club Detail — club info, location, contact, how to join
+5. Courses — browse all available coaching courses across sports
+6. Licenses — browse and purchase sport licenses per sport
+7. Login / Register
+8. User Dashboard — my memberships, my licenses, my courses, my sports
+
+---
+
+DESIGN — inspired by minidrett.no:
+
+- Clean white background (#ffffff)
+- Light gray section backgrounds (#f5f5f5) for alternating sections
+- Primary color: deep green (#1a5c38) — Saudi national color
+- Accent color: gold (#c8a84b)
+- Font: Inter (English), Tajawal (Arabic) — both available on Google Fonts
+- Top navbar: SportPass logo left, nav links center, AR/EN toggle + Login button right
+- Sticky navbar with subtle shadow on scroll
+- All cards: white background, 8px border radius, soft shadow, green hover border
+- Buttons: solid green primary, gold secondary, outlined ghost variant
+- Hero section: full-width, dark green background, white text, two CTA buttons,
+  subtle geometric pattern overlay (SVG, Saudi-inspired)
+- Responsive: mobile-first, 3-col → 2-col → 1-col grid breakpoints
+
+---
+
+THE 5 SPORTS
+
+1. Football (كرة القدم) — icon: ⚽
+2. Basketball (كرة السلة) — icon: 🏀
+3. Swimming (السباحة) — icon: 🏊
+4. Rock Climbing (تسلق الصخور) — icon: 🧗
+5. Volleyball (الكرة الطائرة) — icon: 🏐
+
+Each sport has:
+- Name (AR + EN)
+- Short description
+- Cover color (unique per sport)
+- List of clubs (3 mock clubs each)
+- List of courses (2 mock courses each)
+- List of licenses (2 mock license types each)
+
+---
+
+MOCK DATA STRUCTURE (store in /src/data/)
+
+sports.js — sport name, description, color, icon
+clubs.js — club name, sport, city, region, contact, logo placeholder
+courses.js — course name, sport, level (beginner/intermediate/advanced),
+             duration, price, provider, description
+licenses.js — license name, sport, type (player/coach/referee),
+              price (SAR), validity period, requirements
+
+---
+
+ROCK CLIMBING SPECIFIC DATA
+
+Clubs (3 mock):
+- Jebel Climbing Club — Riyadh
+- AlUla Rock Academy — AlUla (ties into Saudi tourism/Vision 2030)
+- Red Sand Climbers — Jeddah
+
+Courses:
+- Introduction to Indoor Climbing (beginner, 1 day, 150 SAR)
+- Outdoor Rock Climbing Safety & Technique (intermediate, 2 days, 320 SAR)
+
+Licenses:
+- Recreational Climber License (player, 80 SAR/year)
+- Certified Climbing Instructor License (coach, 200 SAR/year)
+
+---
+
+COMPONENT STRUCTURE
+
+/src
+  /components
+    Navbar.jsx          ← sticky, bilingual toggle, login button
+    Footer.jsx          ← links, social, language, Vision 2030 badge
+    SportCard.jsx       ← used on home + sports page
+    ClubCard.jsx        ← used on sport detail + clubs page
+    CourseCard.jsx      ← used on courses page
+    LicenseCard.jsx     ← used on licenses page
+    HowItWorks.jsx      ← 3-step explainer section on home
+    SearchFilter.jsx    ← reusable search + filter bar
+  /pages
+    Home.jsx
+    Sports.jsx
+    SportDetail.jsx     ← with Clubs / Courses / Licenses tabs
+    ClubDetail.jsx
+    Courses.jsx
+    Licenses.jsx
+    Login.jsx
+    Dashboard.jsx
+  /data
+    sports.js
+    clubs.js
+    courses.js
+    licenses.js
+  /hooks
+    useLanguage.js      ← toggles AR/EN, switches dir="rtl"
+  App.jsx
+  main.jsx
+
+---
+
+TECHNICAL STACK
+
+- React + Vite
+- React Router v6
+- Tailwind CSS
+- Google Fonts: Inter + Tajawal
+- No backend — all static mock data for now
+- Language toggle switches html dir attribute (rtl/ltr) and swaps text content
+- Placeholder images from https://placehold.co
+
+---
+
+HOME PAGE SECTIONS (build this page fully first)
+
+1. Navbar
+2. Hero — "Your Pass to Sport in Saudi Arabia" + subtext +
+   "Explore Sports" (green) + "Get Your License" (gold outlined) buttons
+3. "Browse by Sport" — 5 sport cards in a row
+4. "How SportPass Works" — 3 steps: Find a Sport → Join a Club → Get Licensed
+5. "Featured Clubs" — 3 club cards
+6. "Upcoming Courses" — 3 course cards
+7. "Supporting Vision 2030" — simple banner with tagline
+8. Footer
+
+---
+
+BUILD ORDER
+
+1. Scaffold full project structure and install dependencies
+2. Set up React Router with all routes
+3. Build Navbar and Footer components
+4. Populate all 4 data files with realistic mock data
+5. Build Home page fully (all 8 sections)
+6. Build Sports listing page
+7. Build Sport Detail page with tabs (Clubs / Courses / Licenses)
+8. Scaffold remaining pages as empty placeholders with a "Coming Soon" message
