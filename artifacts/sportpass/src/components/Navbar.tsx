@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -22,7 +22,7 @@ export function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [location] = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -32,7 +32,7 @@ export function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-  }, [location]);
+  }, [location.pathname]);
 
   const links = navLinks[lang];
 
@@ -46,7 +46,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" data-testid="nav-logo">
+          <Link to="/" data-testid="nav-logo">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="w-8 h-8 rounded-lg bg-[#1a5c38] flex items-center justify-center">
                 <span className="text-white font-bold text-sm">SP</span>
@@ -63,10 +63,10 @@ export function Navbar() {
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6">
             {links.map((link) => (
-              <Link key={link.href} href={link.href}>
+              <Link key={link.href} to={link.href}>
                 <span
                   className={`text-sm font-medium transition-colors cursor-pointer ${
-                    location === link.href
+                    location.pathname === link.href
                       ? "text-[#1a5c38] border-b-2 border-[#1a5c38] pb-0.5"
                       : "text-gray-600 hover:text-[#1a5c38]"
                   }`}
@@ -89,7 +89,7 @@ export function Navbar() {
               {lang === "en" ? "العربية" : "English"}
             </button>
             {/* Login */}
-            <Link href="/login">
+            <Link to="/login">
               <button
                 className="px-4 py-1.5 rounded-md text-sm font-semibold bg-[#1a5c38] text-white hover:bg-[#15492c] transition-colors"
                 data-testid="nav-login"
@@ -114,10 +114,10 @@ export function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3 shadow-lg">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
+            <Link key={link.href} to={link.href}>
               <div
                 className={`block py-2 text-sm font-medium cursor-pointer ${
-                  location === link.href ? "text-[#1a5c38]" : "text-gray-700"
+                  location.pathname === link.href ? "text-[#1a5c38]" : "text-gray-700"
                 }`}
               >
                 {link.label}
@@ -131,7 +131,7 @@ export function Navbar() {
             >
               {lang === "en" ? "العربية" : "English"}
             </button>
-            <Link href="/login" className="flex-1">
+            <Link to="/login" className="flex-1">
               <button className="w-full py-2 rounded-md text-sm font-semibold bg-[#1a5c38] text-white">
                 {lang === "en" ? "Login" : "تسجيل الدخول"}
               </button>

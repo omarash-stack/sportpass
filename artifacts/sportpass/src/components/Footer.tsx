@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export function Footer() {
@@ -47,7 +47,7 @@ export function Footer() {
                 { id: "volleyball", en: "Volleyball", ar: "الكرة الطائرة" },
               ].map((s) => (
                 <li key={s.id}>
-                  <Link href={`/sports/${s.id}`}>
+                  <Link to={`/sports/${s.id}`}>
                     <span className="text-white/70 hover:text-white text-sm transition-colors cursor-pointer">
                       {lang === "en" ? s.en : s.ar}
                     </span>
@@ -71,7 +71,7 @@ export function Footer() {
                 { href: "/dashboard", en: "My Dashboard", ar: "لوحة التحكم" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>
+                  <Link to={link.href}>
                     <span className="text-white/70 hover:text-white text-sm transition-colors cursor-pointer">
                       {lang === "en" ? link.en : link.ar}
                     </span>

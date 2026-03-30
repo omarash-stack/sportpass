@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Register() {
@@ -148,7 +148,7 @@ export default function Register() {
 
           <p className="text-center text-sm text-gray-500 mt-6">
             {lang === "en" ? "Already have an account? " : "لديك حساب بالفعل؟ "}
-            <Link href="/login">
+            <Link to="/login">
               <span className="text-[#1a5c38] font-semibold hover:underline cursor-pointer">
                 {lang === "en" ? "Sign In" : "تسجيل الدخول"}
               </span>

@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { ArrowRight, Award, Shield, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";
@@ -72,7 +72,7 @@ export default function Home() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/sports">
+            <Link to="/sports">
               <button
                 className="flex items-center gap-2 px-8 py-3.5 bg-white text-[#1a5c38] font-semibold rounded-lg hover:bg-gray-50 transition-colors text-sm shadow-lg"
                 data-testid="hero-cta-explore"
@@ -81,7 +81,7 @@ export default function Home() {
                 <ArrowRight size={16} className={lang === "ar" ? "rotate-180" : ""} />
               </button>
             </Link>
-            <Link href="/licenses">
+            <Link to="/licenses">
               <button
                 className="flex items-center gap-2 px-8 py-3.5 border-2 border-[#c8a84b] text-[#c8a84b] font-semibold rounded-lg hover:bg-[#c8a84b] hover:text-white transition-colors text-sm"
                 data-testid="hero-cta-license"
@@ -123,7 +123,7 @@ export default function Home() {
                   : "5 رياضات متاحة في جميع أنحاء المملكة"}
               </p>
             </div>
-            <Link href="/sports">
+            <Link to="/sports">
               <span className="text-[#1a5c38] text-sm font-medium hover:underline cursor-pointer flex items-center gap-1">
                 {lang === "en" ? "View All" : "عرض الكل"}
                 <ArrowRight size={14} className={lang === "ar" ? "rotate-180" : ""} />
@@ -153,7 +153,7 @@ export default function Home() {
                 {lang === "en" ? "Top clubs across the Kingdom" : "أفضل الأندية في أنحاء المملكة"}
               </p>
             </div>
-            <Link href="/sports">
+            <Link to="/sports">
               <span className="text-[#1a5c38] text-sm font-medium hover:underline cursor-pointer flex items-center gap-1">
                 {lang === "en" ? "All Clubs" : "جميع الأندية"}
                 <ArrowRight size={14} className={lang === "ar" ? "rotate-180" : ""} />
@@ -182,7 +182,7 @@ export default function Home() {
                   : "شهادات التدريب وتطوير المهارات"}
               </p>
             </div>
-            <Link href="/courses">
+            <Link to="/courses">
               <span className="text-[#1a5c38] text-sm font-medium hover:underline cursor-pointer flex items-center gap-1">
                 {lang === "en" ? "All Courses" : "جميع الدورات"}
                 <ArrowRight size={14} className={lang === "ar" ? "rotate-180" : ""} />

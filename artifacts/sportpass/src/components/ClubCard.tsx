@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { MapPin, Users, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";
@@ -25,7 +25,7 @@ export function ClubCard({ club, showSport = false }: ClubCardProps) {
   const sport = sports.find((s) => s.id === club.sportId);
 
   return (
-    <Link href={`/clubs/${club.id}`}>
+    <Link to={`/clubs/${club.id}`}>
       <div
         className="group bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#1a5c38]/40 hover:shadow-md transition-all duration-200 cursor-pointer"
         data-testid={`club-card-${club.id}`}

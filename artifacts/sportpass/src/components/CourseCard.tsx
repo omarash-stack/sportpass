@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";

@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { User, Award, BookOpen, Trophy, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";
@@ -102,7 +102,7 @@ export default function Dashboard() {
               <Trophy size={16} className="text-[#1a5c38]" />
               {lang === "en" ? "My Memberships" : "عضوياتي"}
             </h2>
-            <Link href="/sports">
+            <Link to="/sports">
               <span className="text-[#1a5c38] text-xs hover:underline cursor-pointer">
                 {lang === "en" ? "Find Clubs" : "ابحث عن أندية"}
               </span>
@@ -139,7 +139,7 @@ export default function Dashboard() {
               <Award size={16} className="text-[#c8a84b]" />
               {lang === "en" ? "My Licenses" : "تراخيصي"}
             </h2>
-            <Link href="/licenses">
+            <Link to="/licenses">
               <span className="text-[#1a5c38] text-xs hover:underline cursor-pointer">
                 {lang === "en" ? "Get License" : "احصل على رخصة"}
               </span>
@@ -179,7 +179,7 @@ export default function Dashboard() {
               <BookOpen size={16} className="text-blue-500" />
               {lang === "en" ? "My Courses" : "دوراتي"}
             </h2>
-            <Link href="/courses">
+            <Link to="/courses">
               <span className="text-[#1a5c38] text-xs hover:underline cursor-pointer">
                 {lang === "en" ? "Browse Courses" : "تصفح الدورات"}
               </span>

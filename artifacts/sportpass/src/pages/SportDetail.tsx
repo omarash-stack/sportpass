@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "wouter";
+import { Link, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getSportById } from "@/data/sports";
@@ -14,8 +14,8 @@ type Tab = "clubs" | "courses" | "licenses";
 
 export default function SportDetail() {
   const { lang } = useLanguage();
-  const params = useParams<{ id: string }>();
-  const sport = getSportById(params.id);
+  const { id = "" } = useParams<{ id: string }>();
+  const sport = getSportById(id);
   const [activeTab, setActiveTab] = useState<Tab>("clubs");
 
   if (!sport) {
@@ -25,7 +25,7 @@ export default function SportDetail() {
           <p className="text-gray-500 mb-4">
             {lang === "en" ? "Sport not found." : "الرياضة غير موجودة."}
           </p>
-          <Link href="/sports">
+          <Link to="/sports">
             <button className="px-4 py-2 bg-[#1a5c38] text-white rounded-lg text-sm">
               {lang === "en" ? "Back to Sports" : "العودة إلى الرياضات"}
             </button>
@@ -53,7 +53,7 @@ export default function SportDetail() {
         style={{ backgroundColor: sport.color }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/sports">
+          <Link to="/sports">
             <button className="flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors">
               <ArrowLeft size={16} className={lang === "ar" ? "rotate-180" : ""} />
               {lang === "en" ? "All Sports" : "جميع الرياضات"}

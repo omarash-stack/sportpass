@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -18,7 +18,7 @@ export function SportCard({ sport }: SportCardProps) {
   const { lang } = useLanguage();
 
   return (
-    <Link href={`/sports/${sport.id}`}>
+    <Link to={`/sports/${sport.id}`}>
       <div
         className="group bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-[#1a5c38]/40 hover:shadow-md transition-all duration-200 cursor-pointer"
         data-testid={`sport-card-${sport.id}`}

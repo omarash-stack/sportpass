@@ -1,4 +1,4 @@
-import { Link, useParams } from "wouter";
+import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, MapPin, Phone, Mail, Globe, Users, Calendar } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getClubById } from "@/data/clubs";
@@ -6,8 +6,8 @@ import { getSportById } from "@/data/sports";
 
 export default function ClubDetail() {
   const { lang } = useLanguage();
-  const params = useParams<{ id: string }>();
-  const club = getClubById(params.id);
+  const { id = "" } = useParams<{ id: string }>();
+  const club = getClubById(id);
   const sport = club ? getSportById(club.sportId) : null;
 
   if (!club) {
@@ -17,7 +17,7 @@ export default function ClubDetail() {
           <p className="text-gray-500 mb-4">
             {lang === "en" ? "Club not found." : "النادي غير موجود."}
           </p>
-          <Link href="/sports">
+          <Link to="/sports">
             <button className="px-4 py-2 bg-[#1a5c38] text-white rounded-lg text-sm">
               {lang === "en" ? "Browse Sports" : "تصفح الرياضات"}
             </button>
@@ -32,7 +32,7 @@ export default function ClubDetail() {
       {/* Header */}
       <div className="bg-[#1a5c38] py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href={`/sports/${club.sportId}`}>
+          <Link to={`/sports/${club.sportId}`}>
             <button className="flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors">
               <ArrowLeft size={16} className={lang === "ar" ? "rotate-180" : ""} />
               {lang === "en"

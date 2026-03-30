@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,33 +28,34 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Router() {
+function AppRoutes() {
   return (
     <Layout>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/sports" component={SportsPage} />
-        <Route path="/sports/:id" component={SportDetail} />
-        <Route path="/clubs/:id" component={ClubDetail} />
-        <Route path="/courses" component={CoursesPage} />
-        <Route path="/licenses" component={LicensesPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route component={NotFound} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sports" element={<SportsPage />} />
+        <Route path="/sports/:id" element={<SportDetail />} />
+        <Route path="/clubs/:id" element={<ClubDetail />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/licenses" element={<LicensesPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Layout>
   );
 }
 
 function App() {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <LanguageProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          <BrowserRouter basename={base === "/" ? undefined : base}>
+            <AppRoutes />
+          </BrowserRouter>
         </LanguageProvider>
         <Toaster />
       </TooltipProvider>
