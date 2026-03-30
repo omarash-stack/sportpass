@@ -91,6 +91,26 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
 
+### `artifacts/sportpass` (`@workspace/sportpass`)
+
+SportPass — a bilingual Arabic/English sports discovery and registration platform for Saudi Arabia. Frontend-only React+Vite app with static mock data.
+
+- Preview path: `/` (root)
+- **Tech**: React 18, Vite, Tailwind CSS v4, wouter routing, shadcn/ui components
+- **Fonts**: Inter (LTR) + Tajawal (RTL) via Google Fonts
+- **Theme**: Deep green `#1a5c38` primary, gold `#c8a84b` accent
+- **Languages**: Full bilingual EN/AR with RTL toggle (stored in `localStorage`)
+- **Data files** (all static, in `src/data/`):
+  - `sports.js` — 5 sports: Football, Basketball, Swimming, Rock Climbing, Volleyball
+  - `clubs.js` — 15 clubs (3 per sport) with cities across KSA
+  - `courses.js` — 10 coaching courses (2 per sport) with dates, prices in SAR
+  - `licenses.js` — 10 license types (player, coach, referee) across all sports
+- **Pages**: Home (`/`), Sports listing, Sport Detail (tabbed: Clubs/Courses/Licenses), Club Detail, Courses, Licenses, Login, Register, Dashboard (mock user)
+- **Key components**: `LanguageProvider`, `Navbar`, `Footer`, `HowItWorks`, `SearchFilter`, `SportCard`, `ClubCard`, `CourseCard`, `LicenseCard`
+- **Hook**: `useLanguage` (reads `lang`, `toggleLang`, `isRTL`, `t()`)
+- Vision 2030 section on homepage
+- All card/button/input elements have `data-testid` attributes
+
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
