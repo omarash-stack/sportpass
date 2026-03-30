@@ -1,4 +1,24 @@
-export const courses = [
+import type { BilingualText } from "./sports";
+
+export interface Course {
+  id: string;
+  sportId: string;
+  name: BilingualText;
+  level: string;
+  levelLabel: BilingualText;
+  duration: BilingualText;
+  durationDays: number;
+  price: number;
+  currency: string;
+  provider: BilingualText;
+  nextDate: string;
+  location: BilingualText;
+  description: BilingualText;
+  maxParticipants: number;
+  featured: boolean;
+}
+
+export const courses: Course[] = [
   // Football courses
   {
     id: "football-coaching-foundations",
@@ -210,10 +230,10 @@ export const courses = [
   }
 ];
 
-export const getCoursesBySport = (sportId) => courses.filter(c => c.sportId === sportId);
-export const getCourseById = (id) => courses.find(c => c.id === id);
-export const getFeaturedCourses = () => courses.filter(c => c.featured);
-export const getUpcomingCourses = (limit = 3) =>
-  courses
-    .sort((a, b) => new Date(a.nextDate) - new Date(b.nextDate))
+export const getCoursesBySport = (sportId: string): Course[] => courses.filter(c => c.sportId === sportId);
+export const getCourseById = (id: string): Course | undefined => courses.find(c => c.id === id);
+export const getFeaturedCourses = (): Course[] => courses.filter(c => c.featured);
+export const getUpcomingCourses = (limit = 3): Course[] =>
+  [...courses]
+    .sort((a, b) => new Date(a.nextDate).getTime() - new Date(b.nextDate).getTime())
     .slice(0, limit);

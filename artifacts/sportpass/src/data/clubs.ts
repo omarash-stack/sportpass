@@ -1,4 +1,23 @@
-export const clubs = [
+import type { BilingualText } from "./sports";
+
+export interface Club {
+  id: string;
+  sportId: string;
+  name: BilingualText;
+  city: BilingualText;
+  region: BilingualText;
+  address: BilingualText;
+  phone: string;
+  email: string;
+  website: string;
+  description: BilingualText;
+  memberCount: number;
+  founded: number;
+  logo: string;
+  featured: boolean;
+}
+
+export const clubs: Club[] = [
   // Football clubs
   {
     id: "riyadh-fc",
@@ -295,6 +314,6 @@ export const clubs = [
   }
 ];
 
-export const getClubsBySport = (sportId) => clubs.filter(c => c.sportId === sportId);
-export const getClubById = (id) => clubs.find(c => c.id === id);
-export const getFeaturedClubs = () => clubs.filter(c => c.featured);
+export const getClubsBySport = (sportId: string): Club[] => clubs.filter(c => c.sportId === sportId);
+export const getClubById = (id: string): Club | undefined => clubs.find(c => c.id === id);
+export const getFeaturedClubs = (): Club[] => clubs.filter(c => c.featured);

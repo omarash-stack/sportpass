@@ -1,4 +1,19 @@
-export const sports = [
+export interface BilingualText {
+  en: string;
+  ar: string;
+}
+
+export interface Sport {
+  id: string;
+  icon: string;
+  color: string;
+  coverColor: string;
+  name: BilingualText;
+  description: BilingualText;
+  shortDescription: BilingualText;
+}
+
+export const sports: Sport[] = [
   {
     id: "football",
     icon: "⚽",
@@ -76,4 +91,4 @@ export const sports = [
   }
 ];
 
-export const getSportById = (id) => sports.find(s => s.id === id);
+export const getSportById = (id: string): Sport | undefined => sports.find(s => s.id === id);

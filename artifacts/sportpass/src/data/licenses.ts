@@ -1,4 +1,22 @@
-export const licenses = [
+import type { BilingualText } from "./sports";
+
+export interface License {
+  id: string;
+  sportId: string;
+  name: BilingualText;
+  type: string;
+  typeLabel: BilingualText;
+  price: number;
+  currency: string;
+  validityMonths: number;
+  validityLabel: BilingualText;
+  description: BilingualText;
+  requirements: { en: string[]; ar: string[] };
+  benefits: { en: string[]; ar: string[] };
+  featured: boolean;
+}
+
+export const licenses: License[] = [
   // Football licenses
   {
     id: "football-player-license",
@@ -250,6 +268,6 @@ export const licenses = [
   }
 ];
 
-export const getLicensesBySport = (sportId) => licenses.filter(l => l.sportId === sportId);
-export const getLicenseById = (id) => licenses.find(l => l.id === id);
-export const getFeaturedLicenses = () => licenses.filter(l => l.featured);
+export const getLicensesBySport = (sportId: string): License[] => licenses.filter(l => l.sportId === sportId);
+export const getLicenseById = (id: string): License | undefined => licenses.find(l => l.id === id);
+export const getFeaturedLicenses = (): License[] => licenses.filter(l => l.featured);
