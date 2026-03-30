@@ -96,7 +96,7 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 SportPass — a bilingual Arabic/English sports discovery and registration platform for Saudi Arabia. Frontend-only React+Vite app with static mock data.
 
 - Preview path: `/` (root)
-- **Tech**: React 18, Vite, Tailwind CSS v4, wouter routing, shadcn/ui components
+- **Tech**: React 18, Vite, Tailwind CSS v4, React Router v6 (react-router-dom v7), shadcn/ui components
 - **Fonts**: Inter (LTR) + Tajawal (RTL) via Google Fonts
 - **Theme**: Deep green `#1a5c38` primary, gold `#c8a84b` accent
 - **Languages**: Full bilingual EN/AR with RTL toggle (stored in `localStorage`)
