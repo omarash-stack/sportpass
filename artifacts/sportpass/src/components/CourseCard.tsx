@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
-import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Calendar, Clock, MapPin, Users, Award } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";
+import { getLicenseRequiringCourse } from "@/data/licenses";
 
 interface Course {
   id: string;
@@ -32,7 +33,9 @@ const levelColors: Record<string, string> = {
 
 export function CourseCard({ course, showSport = false }: CourseCardProps) {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
   const sport = sports.find((s) => s.id === course.sportId);
+  const qualifiesFor = getLicenseRequiringCourse(course.id);
 
   const formattedDate = new Date(course.nextDate).toLocaleDateString(
     lang === "ar" ? "ar-SA" : "en-US",
@@ -110,9 +113,23 @@ export function CourseCard({ course, showSport = false }: CourseCardProps) {
         </div>
       </div>
 
+      {/* Qualifies for badge */}
+      {qualifiesFor && (
+        <div className="flex items-center gap-1.5 mb-3 px-2.5 py-1.5 rounded-lg bg-[#c8a84b]/10 border border-[#c8a84b]/20">
+          <Award size={12} className="text-[#c8a84b] flex-shrink-0" />
+          <span className="text-[10px] font-medium text-[#c8a84b]">
+            {lang === "en" ? "Qualifies for:" : "يؤهل لـ:"}{" "}
+            <span className="text-gray-700">
+              {lang === "en" ? qualifiesFor.name.en : qualifiesFor.name.ar}
+            </span>
+          </span>
+        </div>
+      )}
+
       {/* CTA */}
       <button
-        className="w-full py-2 rounded-lg bg-[#1a5c38] text-white text-xs font-semibold hover:bg-[#15492c] transition-colors"
+        onClick={() => navigate(`/courses/${course.id}`)}
+        className="w-full py-2 rounded-lg bg-[#1a5c38] text-white text-xs font-semibold hover:bg-[#15492c] transition-colors cursor-pointer"
         data-testid={`course-register-${course.id}`}
       >
         {lang === "en" ? "Register Now" : "سجّل الآن"}

@@ -28,8 +28,8 @@ export default function SportsPage() {
           </h1>
           <p className="text-white/70">
             {lang === "en"
-              ? "Discover the 5 sports available through SportPass"
-              : "اكتشف الرياضات الـ 5 المتاحة عبر سبورت باس"}
+              ? "Discover the 6 sports available through SportPass"
+              : "اكتشف الرياضات الـ 6 المتاحة عبر سبورت باس"}
           </p>
         </div>
       </div>

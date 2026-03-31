@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CheckCircle2, Clock } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { sports } from "@/data/sports";
@@ -29,6 +30,7 @@ const typeColors: Record<string, string> = {
 
 export function LicenseCard({ license, showSport = false }: LicenseCardProps) {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
   const sport = sports.find((s) => s.id === license.sportId);
 
   return (
@@ -103,7 +105,8 @@ export function LicenseCard({ license, showSport = false }: LicenseCardProps) {
 
       {/* CTA */}
       <button
-        className="w-full py-2 rounded-lg bg-[#c8a84b] text-white text-xs font-semibold hover:bg-[#b8963d] transition-colors"
+        onClick={() => navigate(`/licenses/${license.id}`)}
+        className="w-full py-2 rounded-lg bg-[#c8a84b] text-white text-xs font-semibold hover:bg-[#b8963d] transition-colors cursor-pointer"
         data-testid={`license-purchase-${license.id}`}
       >
         {lang === "en" ? "Get License" : "احصل على الرخصة"}

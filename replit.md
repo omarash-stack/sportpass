@@ -101,14 +101,14 @@ SportPass — a bilingual Arabic/English sports discovery and registration platf
 - **Theme**: Deep green `#1a5c38` primary, gold `#c8a84b` accent
 - **Languages**: Full bilingual EN/AR with RTL toggle (stored in `localStorage`)
 - **Data files** (all static, in `src/data/`):
-  - `sports.js` — 5 sports: Football, Basketball, Swimming, Rock Climbing, Volleyball
-  - `clubs.js` — 15 clubs (3 per sport) with cities across KSA
-  - `courses.js` — 10 coaching courses (2 per sport) with dates, prices in SAR
-  - `licenses.js` — 10 license types (player, coach, referee) across all sports
-- **Pages**: Home (`/`), Sports listing, Sport Detail (tabbed: Clubs/Courses/Licenses), Club Detail, Courses, Licenses, Login, Register, Dashboard (mock user)
-- **Key components**: `LanguageProvider`, `Navbar`, `Footer`, `HowItWorks`, `SearchFilter`, `SportCard`, `ClubCard`, `CourseCard`, `LicenseCard`
-- **Hook**: `useLanguage` (reads `lang`, `toggleLang`, `isRTL`, `t()`)
-- Vision 2030 section on homepage
+  - `sports.ts` — 6 sports: Football, Basketball, Swimming, Rock Climbing, Volleyball, Boxing (each with Unsplash image)
+  - `clubs.ts` — 18 clubs with multi-sport support (`sportIds` array), cities across KSA
+  - `courses.ts` — 12 coaching courses (2 per sport) with dates, prices in SAR
+  - `licenses.ts` — 12 license types (player, coach, referee) with course prerequisites (`prerequisiteCourseIds`), and 2 pathways (Competitive Player, Pro Coaching License)
+- **Pages**: Home (`/`), Sports listing (`/sports`), Sport Detail (`/sports/:id` with tabbed Clubs/Courses/Licenses), Club Detail (`/clubs/:id`), Course Detail (`/courses/:id`), License Detail (`/licenses/:id`), Login (`/login`), Dashboard (`/dashboard`)
+- **Key components**: `LanguageProvider`, `AuthProvider`, `Navbar`, `Footer`, `HowItWorks`, `SportCard`, `ClubCard`, `CourseCard`, `LicenseCard`
+- **Hooks**: `useLanguage` (reads `lang`, `toggleLang`, `isRTL`, `t()`), `useAuth` (simple localStorage auth)
+- **Features**: Greyscale sport image cards with hover reveal, page fade transitions, pathway expand/collapse animations, dashboard with modal popups and certificates, course-to-license prerequisite badges, city filters, URL tab persistence
 - All card/button/input elements have `data-testid` attributes
 
 ### `scripts` (`@workspace/scripts`)

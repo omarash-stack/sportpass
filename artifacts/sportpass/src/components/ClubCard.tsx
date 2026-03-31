@@ -5,7 +5,7 @@ import { sports } from "@/data/sports";
 
 interface Club {
   id: string;
-  sportId: string;
+  sportIds: string[];
   name: { en: string; ar: string };
   city: { en: string; ar: string };
   region: { en: string; ar: string };
@@ -17,17 +17,16 @@ interface Club {
 
 interface ClubCardProps {
   club: Club;
-  showSport?: boolean;
 }
 
-export function ClubCard({ club, showSport = false }: ClubCardProps) {
+export function ClubCard({ club }: ClubCardProps) {
   const { lang } = useLanguage();
-  const sport = sports.find((s) => s.id === club.sportId);
+  const clubSports = club.sportIds.map((id) => sports.find((s) => s.id === id)).filter(Boolean);
 
   return (
     <Link to={`/clubs/${club.id}`}>
       <div
-        className="group bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#1a5c38]/40 hover:shadow-md transition-all duration-200 cursor-pointer"
+        className="group bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#1a5c38]/40 hover:shadow-md transition-all duration-200 cursor-pointer h-full flex flex-col"
         data-testid={`club-card-${club.id}`}
       >
         <div className="flex items-start gap-4">
@@ -38,13 +37,6 @@ export function ClubCard({ club, showSport = false }: ClubCardProps) {
             className="w-14 h-14 rounded-xl object-cover flex-shrink-0"
           />
           <div className="flex-1 min-w-0">
-            {/* Sport badge */}
-            {showSport && sport && (
-              <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full mb-2 text-white"
-                style={{ backgroundColor: sport.color }}>
-                {sport.icon} {lang === "en" ? sport.name.en : sport.name.ar}
-              </span>
-            )}
             {/* Name */}
             <h3 className="font-bold text-gray-900 text-sm leading-tight">
               {lang === "en" ? club.name.en : club.name.ar}
@@ -60,10 +52,18 @@ export function ClubCard({ club, showSport = false }: ClubCardProps) {
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-gray-500 text-xs leading-relaxed mt-3 line-clamp-2">
-          {lang === "en" ? club.description.en : club.description.ar}
-        </p>
+        {/* Sports */}
+        <div className="flex items-center gap-1.5 flex-wrap mt-3">
+          {clubSports.map((sport) => (
+            <span
+              key={sport!.id}
+              className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full text-white"
+              style={{ backgroundColor: sport!.color }}
+            >
+              {sport!.icon} {lang === "en" ? sport!.name.en : sport!.name.ar}
+            </span>
+          ))}
+        </div>
 
         {/* Footer */}
         <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">

@@ -2,7 +2,7 @@ import type { BilingualText } from "./sports";
 
 export interface Club {
   id: string;
-  sportId: string;
+  sportIds: string[];
   name: BilingualText;
   city: BilingualText;
   region: BilingualText;
@@ -21,7 +21,7 @@ export const clubs: Club[] = [
   // Football clubs
   {
     id: "riyadh-fc",
-    sportId: "football",
+    sportIds: ["football"],
     name: { en: "Riyadh Football Club", ar: "نادي الرياض لكرة القدم" },
     city: { en: "Riyadh", ar: "الرياض" },
     region: { en: "Riyadh Region", ar: "منطقة الرياض" },
@@ -40,8 +40,8 @@ export const clubs: Club[] = [
   },
   {
     id: "jeddah-united",
-    sportId: "football",
-    name: { en: "Jeddah United Football", ar: "جدة يونايتد لكرة القدم" },
+    sportIds: ["football", "volleyball"],
+    name: { en: "Jeddah United Sports Club", ar: "نادي جدة يونايتد الرياضي" },
     city: { en: "Jeddah", ar: "جدة" },
     region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
     address: { en: "Al Hamra District, Jeddah", ar: "حي الحمراء، جدة" },
@@ -59,7 +59,7 @@ export const clubs: Club[] = [
   },
   {
     id: "eastern-eagles",
-    sportId: "football",
+    sportIds: ["football", "basketball"],
     name: { en: "Eastern Eagles FC", ar: "نسور الشرقية" },
     city: { en: "Dammam", ar: "الدمام" },
     region: { en: "Eastern Province", ar: "المنطقة الشرقية" },
@@ -80,8 +80,8 @@ export const clubs: Club[] = [
   // Basketball clubs
   {
     id: "riyadh-hoops",
-    sportId: "basketball",
-    name: { en: "Riyadh Hoops Academy", ar: "أكاديمية رياض هوبس للسلة" },
+    sportIds: ["basketball", "boxing"],
+    name: { en: "Riyadh Athletic Academy", ar: "أكاديمية الرياض الرياضية" },
     city: { en: "Riyadh", ar: "الرياض" },
     region: { en: "Riyadh Region", ar: "منطقة الرياض" },
     address: { en: "Prince Sultan Sports Complex, Riyadh", ar: "مجمع الأمير سلطان الرياضي، الرياض" },
@@ -99,7 +99,7 @@ export const clubs: Club[] = [
   },
   {
     id: "jeddah-ballers",
-    sportId: "basketball",
+    sportIds: ["basketball"],
     name: { en: "Jeddah Ballers", ar: "جدة بولرز" },
     city: { en: "Jeddah", ar: "جدة" },
     region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
@@ -118,7 +118,7 @@ export const clubs: Club[] = [
   },
   {
     id: "eastern-shooters",
-    sportId: "basketball",
+    sportIds: ["basketball"],
     name: { en: "Eastern Province Shooters", ar: "رماة المنطقة الشرقية" },
     city: { en: "Al Khobar", ar: "الخبر" },
     region: { en: "Eastern Province", ar: "المنطقة الشرقية" },
@@ -139,8 +139,8 @@ export const clubs: Club[] = [
   // Swimming clubs
   {
     id: "riyadh-aquatics",
-    sportId: "swimming",
-    name: { en: "Riyadh Aquatics Club", ar: "نادي الرياض للألعاب المائية" },
+    sportIds: ["swimming", "volleyball"],
+    name: { en: "Riyadh Sports & Aquatics Club", ar: "نادي الرياض الرياضي والمائي" },
     city: { en: "Riyadh", ar: "الرياض" },
     region: { en: "Riyadh Region", ar: "منطقة الرياض" },
     address: { en: "King Abdullah Sports City, Riyadh", ar: "مدينة الملك عبدالله الرياضية، الرياض" },
@@ -158,7 +158,7 @@ export const clubs: Club[] = [
   },
   {
     id: "jeddah-swimmers",
-    sportId: "swimming",
+    sportIds: ["swimming"],
     name: { en: "Jeddah Sea Swimmers", ar: "سباحو بحر جدة" },
     city: { en: "Jeddah", ar: "جدة" },
     region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
@@ -177,7 +177,7 @@ export const clubs: Club[] = [
   },
   {
     id: "dammam-dolphins",
-    sportId: "swimming",
+    sportIds: ["swimming"],
     name: { en: "Dammam Dolphins", ar: "دلافين الدمام" },
     city: { en: "Dammam", ar: "الدمام" },
     region: { en: "Eastern Province", ar: "المنطقة الشرقية" },
@@ -198,7 +198,7 @@ export const clubs: Club[] = [
   // Rock Climbing clubs
   {
     id: "jebel-climbing-club",
-    sportId: "rock-climbing",
+    sportIds: ["rock-climbing"],
     name: { en: "Jebel Climbing Club", ar: "نادي جبل للتسلق" },
     city: { en: "Riyadh", ar: "الرياض" },
     region: { en: "Riyadh Region", ar: "منطقة الرياض" },
@@ -217,7 +217,7 @@ export const clubs: Club[] = [
   },
   {
     id: "alula-rock-academy",
-    sportId: "rock-climbing",
+    sportIds: ["rock-climbing"],
     name: { en: "AlUla Rock Academy", ar: "أكاديمية العُلا للصخور" },
     city: { en: "AlUla", ar: "العُلا" },
     region: { en: "Madinah Region", ar: "منطقة المدينة المنورة" },
@@ -236,7 +236,7 @@ export const clubs: Club[] = [
   },
   {
     id: "red-sand-climbers",
-    sportId: "rock-climbing",
+    sportIds: ["rock-climbing"],
     name: { en: "Red Sand Climbers", ar: "متسلقو الرمال الحمراء" },
     city: { en: "Jeddah", ar: "جدة" },
     region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
@@ -257,7 +257,7 @@ export const clubs: Club[] = [
   // Volleyball clubs
   {
     id: "riyadh-spikers",
-    sportId: "volleyball",
+    sportIds: ["volleyball"],
     name: { en: "Riyadh Spikers", ar: "سبايكرز الرياض" },
     city: { en: "Riyadh", ar: "الرياض" },
     region: { en: "Riyadh Region", ar: "منطقة الرياض" },
@@ -276,7 +276,7 @@ export const clubs: Club[] = [
   },
   {
     id: "jeddah-beach-volleyball",
-    sportId: "volleyball",
+    sportIds: ["volleyball"],
     name: { en: "Jeddah Beach Volleyball", ar: "كرة شاطئ جدة" },
     city: { en: "Jeddah", ar: "جدة" },
     region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
@@ -295,7 +295,7 @@ export const clubs: Club[] = [
   },
   {
     id: "khobar-volley",
-    sportId: "volleyball",
+    sportIds: ["volleyball"],
     name: { en: "Khobar Volleyball Club", ar: "نادي الخبر للكرة الطائرة" },
     city: { en: "Al Khobar", ar: "الخبر" },
     region: { en: "Eastern Province", ar: "المنطقة الشرقية" },
@@ -311,9 +311,68 @@ export const clubs: Club[] = [
     founded: 2011,
     logo: "https://placehold.co/80x80/5a3e8c/ffffff?text=KVC",
     featured: false
+  },
+
+  // Boxing clubs
+  {
+    id: "riyadh-boxing-gym",
+    sportIds: ["boxing", "rock-climbing"],
+    name: { en: "Riyadh Combat & Climbing Center", ar: "مركز الرياض للقتال والتسلق" },
+    city: { en: "Riyadh", ar: "الرياض" },
+    region: { en: "Riyadh Region", ar: "منطقة الرياض" },
+    address: { en: "Al Malaz District, Riyadh", ar: "حي الملز، الرياض" },
+    phone: "+966 11 300 5678",
+    email: "info@riyadhboxing.sa",
+    website: "www.riyadhboxing.sa",
+    description: {
+      en: "Premier boxing gym in Riyadh offering professional coaching for beginners to advanced fighters. Home to several national champions.",
+      ar: "صالة ملاكمة رائدة في الرياض تقدم تدريبًا احترافيًا من المبتدئين إلى المحترفين. موطن لعدد من الأبطال الوطنيين."
+    },
+    memberCount: 280,
+    founded: 2018,
+    logo: "https://placehold.co/80x80/b91c1c/ffffff?text=RBG",
+    featured: true
+  },
+  {
+    id: "jeddah-fight-club",
+    sportIds: ["boxing"],
+    name: { en: "Jeddah Fight Club", ar: "نادي جدة للقتال" },
+    city: { en: "Jeddah", ar: "جدة" },
+    region: { en: "Makkah Region", ar: "منطقة مكة المكرمة" },
+    address: { en: "Al Rawdah District, Jeddah", ar: "حي الروضة، جدة" },
+    phone: "+966 12 400 9012",
+    email: "info@jeddahfightclub.sa",
+    website: "www.jeddahfightclub.sa",
+    description: {
+      en: "Modern boxing facility with Olympic-standard rings and equipment. Offers group classes, personal training, and youth programs.",
+      ar: "منشأة ملاكمة حديثة بحلبات ومعدات بمعايير أولمبية. تقدم دروسًا جماعية وتدريبًا شخصيًا وبرامج للشباب."
+    },
+    memberCount: 195,
+    founded: 2020,
+    logo: "https://placehold.co/80x80/b91c1c/ffffff?text=JFC",
+    featured: false
+  },
+  {
+    id: "dammam-knockout-gym",
+    sportIds: ["boxing"],
+    name: { en: "Dammam Knockout Gym", ar: "صالة الدمام نوك أوت" },
+    city: { en: "Dammam", ar: "الدمام" },
+    region: { en: "Eastern Province", ar: "المنطقة الشرقية" },
+    address: { en: "Al Faisaliyah District, Dammam", ar: "حي الفيصلية، الدمام" },
+    phone: "+966 13 500 3456",
+    email: "info@dammamko.sa",
+    website: "www.dammamko.sa",
+    description: {
+      en: "Eastern Province's top boxing gym. Known for producing competitive amateur fighters and hosting regional tournaments.",
+      ar: "أفضل صالة ملاكمة في المنطقة الشرقية. معروفة بإعداد ملاكمين هواة تنافسيين واستضافة البطولات الإقليمية."
+    },
+    memberCount: 160,
+    founded: 2019,
+    logo: "https://placehold.co/80x80/b91c1c/ffffff?text=DKG",
+    featured: false
   }
 ];
 
-export const getClubsBySport = (sportId: string): Club[] => clubs.filter(c => c.sportId === sportId);
+export const getClubsBySport = (sportId: string): Club[] => clubs.filter(c => c.sportIds.includes(sportId));
 export const getClubById = (id: string): Club | undefined => clubs.find(c => c.id === id);
 export const getFeaturedClubs = (): Club[] => clubs.filter(c => c.featured);

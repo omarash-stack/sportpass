@@ -1,20 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const navLinks = {
   en: [
     { href: "/", label: "Home" },
     { href: "/sports", label: "Sports" },
-    { href: "/courses", label: "Courses" },
-    { href: "/licenses", label: "Licenses" },
   ],
   ar: [
     { href: "/", label: "الرئيسية" },
     { href: "/sports", label: "الرياضات" },
-    { href: "/courses", label: "الدورات" },
-    { href: "/licenses", label: "التراخيص" },
   ],
 };
 
@@ -41,6 +37,7 @@ export function Navbar() {
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
         scrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur-sm"
       }`}
+      dir="ltr"
       data-testid="navbar"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,13 +85,13 @@ export function Navbar() {
             >
               {lang === "en" ? "العربية" : "English"}
             </button>
-            {/* Login */}
-            <Link to="/login">
+            {/* Profile */}
+            <Link to="/dashboard">
               <button
-                className="px-4 py-1.5 rounded-md text-sm font-semibold bg-[#1a5c38] text-white hover:bg-[#15492c] transition-colors"
-                data-testid="nav-login"
+                className="w-9 h-9 rounded-full bg-[#1a5c38] text-white flex items-center justify-center hover:bg-[#15492c] transition-colors cursor-pointer"
+                data-testid="nav-profile"
               >
-                {lang === "en" ? "Login" : "تسجيل الدخول"}
+                <User size={16} />
               </button>
             </Link>
           </div>
@@ -131,9 +128,10 @@ export function Navbar() {
             >
               {lang === "en" ? "العربية" : "English"}
             </button>
-            <Link to="/login" className="flex-1">
-              <button className="w-full py-2 rounded-md text-sm font-semibold bg-[#1a5c38] text-white">
-                {lang === "en" ? "Login" : "تسجيل الدخول"}
+            <Link to="/dashboard" className="flex-1">
+              <button className="w-full py-2 rounded-md text-sm font-semibold bg-[#1a5c38] text-white flex items-center justify-center gap-2">
+                <User size={14} />
+                {lang === "en" ? "My Profile" : "ملفي"}
               </button>
             </Link>
           </div>

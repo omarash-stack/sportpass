@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
 interface Sport {
   id: string;
-  icon: string;
+  image: string;
   color: string;
   name: { en: string; ar: string };
-  shortDescription: { en: string; ar: string };
 }
 
 interface SportCardProps {
@@ -20,44 +18,24 @@ export function SportCard({ sport }: SportCardProps) {
   return (
     <Link to={`/sports/${sport.id}`}>
       <div
-        className="group bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-[#1a5c38]/40 hover:shadow-md transition-all duration-200 cursor-pointer"
+        className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-shadow duration-500"
         data-testid={`sport-card-${sport.id}`}
       >
-        {/* Color accent bar */}
-        <div
-          className="w-full h-1.5 rounded-full mb-5 opacity-80"
-          style={{ backgroundColor: sport.color }}
+        {/* Image with grayscale */}
+        <img
+          src={sport.image}
+          alt={lang === "en" ? sport.name.en : sport.name.ar}
+          className="sport-card-img absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* Icon */}
-        <div className="text-4xl mb-4">{sport.icon}</div>
+        {/* Dark gradient overlay at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-        {/* Name */}
-        <h3 className="font-bold text-gray-900 text-base mb-1.5">
-          {lang === "en" ? sport.name.en : sport.name.ar}
-        </h3>
-        {lang === "en" && (
-          <p className="text-xs text-gray-400 mb-2 font-medium">{sport.name.ar}</p>
-        )}
-        {lang === "ar" && (
-          <p className="text-xs text-gray-400 mb-2 font-medium">{sport.name.en}</p>
-        )}
-
-        {/* Description */}
-        <p className="text-gray-500 text-sm leading-relaxed mb-4">
-          {lang === "en" ? sport.shortDescription.en : sport.shortDescription.ar}
-        </p>
-
-        {/* CTA */}
-        <div
-          className="flex items-center gap-1 text-sm font-medium transition-colors"
-          style={{ color: sport.color }}
-        >
-          <span>{lang === "en" ? "Explore" : "استكشف"}</span>
-          <ArrowRight
-            size={14}
-            className={`transition-transform group-hover:translate-x-1 ${lang === "ar" ? "rotate-180" : ""}`}
-          />
+        {/* Sport name */}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="text-white font-bold text-xl">
+            {lang === "en" ? sport.name.en : sport.name.ar}
+          </h3>
         </div>
       </div>
     </Link>

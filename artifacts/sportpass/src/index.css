@@ -228,6 +228,71 @@
   font-family: 'Inter', 'Tajawal', sans-serif;
 }
 
+/* Sport card grayscale hover */
+.sport-card-img {
+  filter: grayscale(100%);
+  transition: filter 500ms ease;
+}
+.group:hover .sport-card-img {
+  filter: grayscale(0);
+}
+
+/* Modal animations */
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modal-content-in {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes modal-overlay-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes modal-content-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to   { opacity: 0; transform: scale(0.95) translateY(10px); }
+}
+.modal-overlay {
+  animation: modal-overlay-in 300ms ease-out both;
+}
+.modal-overlay.closing {
+  animation: modal-overlay-out 200ms ease-in both;
+}
+.modal-content {
+  animation: modal-content-in 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.modal-content.closing {
+  animation: modal-content-out 200ms ease-in both;
+}
+
+/* Pathway expand/collapse */
+@keyframes pathway-expand {
+  from { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+  to   { opacity: 1; max-height: 3000px; }
+}
+@keyframes pathway-step-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pathway-content {
+  animation: pathway-expand 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  overflow: hidden;
+}
+.pathway-step {
+  animation: pathway-step-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Page transition — premium fade */
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.page-transition {
+  animation: page-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @layer base {
   * {
     @apply border-border;

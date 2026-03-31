@@ -227,6 +227,48 @@ export const courses: Course[] = [
     },
     maxParticipants: 16,
     featured: true
+  },
+
+  // Boxing courses
+  {
+    id: "boxing-fundamentals",
+    sportId: "boxing",
+    name: { en: "Boxing Fundamentals", ar: "أساسيات الملاكمة" },
+    level: "beginner",
+    levelLabel: { en: "Beginner", ar: "مبتدئ" },
+    duration: { en: "3 days", ar: "3 أيام" },
+    durationDays: 3,
+    price: 300,
+    currency: "SAR",
+    provider: { en: "Saudi Boxing Federation", ar: "الاتحاد السعودي للملاكمة" },
+    nextDate: "2026-05-10",
+    location: { en: "Riyadh", ar: "الرياض" },
+    description: {
+      en: "Learn the basics of boxing including stance, footwork, jab, cross, hook, and uppercut. Includes defensive techniques and conditioning drills.",
+      ar: "تعلّم أساسيات الملاكمة بما في ذلك الوقفة والحركة واللكمة المستقيمة والكروس والخطاف والأبركت. يشمل تقنيات الدفاع وتمارين اللياقة."
+    },
+    maxParticipants: 15,
+    featured: true
+  },
+  {
+    id: "boxing-coaching-certification",
+    sportId: "boxing",
+    name: { en: "Boxing Coaching Certification", ar: "شهادة تدريب الملاكمة" },
+    level: "intermediate",
+    levelLabel: { en: "Intermediate", ar: "متوسط" },
+    duration: { en: "5 days", ar: "5 أيام" },
+    durationDays: 5,
+    price: 500,
+    currency: "SAR",
+    provider: { en: "Saudi Boxing Federation", ar: "الاتحاد السعودي للملاكمة" },
+    nextDate: "2026-06-01",
+    location: { en: "Online", ar: "عبر الإنترنت" },
+    description: {
+      en: "Comprehensive coaching course covering training methodology, corner work, fight strategy, and athlete development for aspiring boxing coaches.",
+      ar: "دورة تدريبية شاملة تغطي منهجية التدريب وعمل الزاوية واستراتيجية القتال وتطوير الرياضيين للمدربين الطموحين."
+    },
+    maxParticipants: 20,
+    featured: false
   }
 ];
 
